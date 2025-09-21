@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz | Sistem Katrol</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      const questions = [
+        {
+          id: 1,
+          question:
+            "Berapakah gaya yang dibutuhkan untuk mengangkat beban 100N menggunakan katrol tetap?",
+          options: ["50N", "100N", "150N", "200N"],
+          correct: 1,
+          explanation:
+            "Pada katrol tetap, gaya yang dibutuhkan sama dengan berat beban (F = W)",
+        },
+        {
+          id: 2,
+          question: "Keuntungan mekanis pada katrol bergerak adalah?",
+          options: ["1", "2", "3", "4"],
+          correct: 1,
+          explanation: "Keuntungan mekanis pada katrol bergerak adalah 2.",
+        },
+        {
+          id: 3,
+          question: "Fungsi katrol dalam kehidupan sehari-hari adalah?",
+          options: [
+            "Memudahkan pekerjaan",
+            "Mempercepat waktu",
+            "Memperbesar gaya",
+            "Semua jawaban benar",
+          ],
+          correct: 3,
+          explanation:
+            "Katrol berfungsi memudahkan pekerjaan, mempercepat waktu, dan memperbesar gaya.",
+        },
+        {
+          id: 4,
+          question: "Rumus mencari gaya pada katrol tetap adalah?",
+          options: ["F = m x a", "F = W", "F = 1/2 W", "F = W x h"],
+          correct: 1,
+          explanation:
+            "Rumus mencari gaya pada katrol tetap adalah F = W (gaya = berat beban).",
+        },
+        {
+          id: 5,
+          question: "Apa yang dimaksud dengan katrol majemuk?",
+          options: [
+            "Katrol dengan satu roda",
+            "Katrol dengan dua roda",
+            "Kombinasi katrol tetap dan bergerak",
+            "Katrol yang bergerak",
+          ],
+          correct: 2,
+          explanation:
+            "Katrol majemuk adalah kombinasi dari katrol tetap dan katrol bergerak.",
+        },
+      ];
+
+      let currentQuestions = [];
+      let currentScore = 0;
+      let currentQuestionIndex = 0;
+
+      function shuffleQuestions() {
+        currentQuestions = [...questions]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 5);
+      }
+
+      function checkAnswer(answer) {
+        const correctAnswer = currentQuestions[currentQuestionIndex].correct;
+        const selectedOption = document.getElementById(`option${answer}`);
+
+        if (answer === correctAnswer) {
+          currentScore += 20;
+          selectedOption.classList.add("correct");
+        } else {
+          selectedOption.classList.add("wrong");
+          document
+            .getElementById(`option${correctAnswer}`)
+            .classList.add("correct");
+        }
+
+        // Disable all options
+        const options = document.querySelectorAll(".quiz-option");
+        options.forEach((option) => (option.disabled = true));
+
+        // Show explanation and next button
+        document.getElementById("explanation").innerText =
+          currentQuestions[currentQuestionIndex].explanation;
+        document
+          .getElementById("explanationContainer")
+          .classList.remove("hidden");
+        document.getElementById("nextButton").classList.remove("hidden");
+      }
+
+      function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentQuestions.length) {
+          updateQuiz();
+        } else {
+          showResults();
+        }
+      }
+
+      function updateQuiz() {
+        const question = currentQuestions[currentQuestionIndex];
+        document.getElementById("question").innerText = question.question;
+
+        for (let i = 0; i < question.options.length; i++) {
+          const optionButton = document.getElementById(`option${i}`);
+          optionButton.innerText = question.options[i];
+          optionButton.disabled = false;
+          optionButton.classList.remove("correct", "wrong");
+        }
+
+        document.getElementById("explanationContainer").classList.add("hidden");
+        document.getElementById("nextButton").classList.add("hidden");
+      }
+
+      function showResults() {
+        document.getElementById("quizContainer").classList.add("hidden");
+        document.getElementById("scoreContainer").classList.remove("hidden");
+        document.getElementById("finalScore").innerText = currentScore;
+      }
+
+      window.onload = () => {
+        shuffleQuestions();
+        updateQuiz();
+      };
+    </script>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <nav class="gradient-bg text-white p-4">
+      <div class="container mx-auto">
+        <a href="index.html" class="text-xl font-bold">← Kembali ke Beranda</a>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+          <h1 class="text-2xl font-bold mb-4 dark:text-white">
+            Quiz Sistem Katrol
+          </h1>
+          <div id="quizContainer">
+            <div
+              id="question"
+              class="text-xl font-semibold mb-4 dark:text-white"
+            ></div>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <button
+                id="option0"
+                class="quiz-option bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded font-medium"
+                onclick="checkAnswer(0)"
+              ></button>
+              <button
+                id="option1"
+                class="quiz-option bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded font-medium"
+                onclick="checkAnswer(1)"
+              ></button>
+              <button
+                id="option2"
+                class="quiz-option bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded font-medium"
+                onclick="checkAnswer(2)"
+              ></button>
+              <button
+                id="option3"
+                class="quiz-option bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded font-medium"
+                onclick="checkAnswer(3)"
+              ></button>
+            </div>
+            <div
+              id="explanationContainer"
+              class="hidden p-4 bg-gray-100 dark:bg-gray-700 rounded-lg"
+            >
+              <p class="text-gray-700 dark:text-gray-300" id="explanation"></p>
+            </div>
+            <button
+              id="nextButton"
+              class="hidden bg-blue-500 text-white p-3 rounded font-medium"
+              onclick="nextQuestion()"
+            >
+              Soal Berikutnya
+            </button>
+          </div>
+          <div
+            id="scoreContainer"
+            class="mt-4 text-center hidden dark:text-white"
+          >
+            <h2 class="text-xl font-bold">
+              Skor Akhir: <span id="finalScore">0</span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

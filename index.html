@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beranda | Sistem Katrol Fisika SMA</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
+  </head>
+  <body
+    class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300"
+  >
+    <!-- Navbar -->
+    <nav
+      class="sticky top-0 z-50 bg-blue-600 dark:bg-blue-800 text-white shadow-lg"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16"
+      >
+        <!-- Logo -->
+        <a href="#" class="font-bold text-lg">Fisika Katrol</a>
+
+        <!-- Menu Desktop -->
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="hover:underline">Beranda</a></li>
+          <li><a href="profile.html" class="hover:underline">ProfileDev</a></li>
+          <li><a href="quiz.html" class="hover:underline">Quiz</a></li>
+
+          <!-- Dropdown -->
+          <li class="relative group">
+            <button class="hover:underline">Materi ▼</button>
+            <ul
+              class="absolute left-0 mt-2 w-40 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-lg rounded-lg hidden group-hover:block"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-700"
+                  >Pengantar</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-700"
+                  >Jenis Katrol</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-700"
+                  >Contoh Soal</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Dark Mode Toggle -->
+        <button
+          id="toggleDark"
+          class="ml-4 p-2 rounded bg-blue-500 dark:bg-gray-700 hover:bg-blue-700 dark:hover:bg-gray-600"
+        >
+          🌙
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-2xl">☰</button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-blue-700 dark:bg-blue-900 p-4 space-y-2"
+      >
+        <a href="index.html" class="block hover:underline">Beranda</a>
+        <a href="profile.html" class="block hover:underline">ProfileDev</a>
+        <a href="quiz.html" class="block hover:underline">Quiz</a>
+        <div>
+          <p class="font-semibold">Materi</p>
+          <a href="#" class="block ml-2 hover:underline">Pengantar</a>
+          <a href="#" class="block ml-2 hover:underline">Jenis Katrol</a>
+          <a href="#" class="block ml-2 hover:underline">Contoh Soal</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="max-w-7xl mx-auto px-4 py-16 text-center">
+      <h1
+        class="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-4"
+      >
+        Belajar Sistem Katrol
+      </h1>
+      <p class="text-lg md:text-xl mb-6">
+        Media pembelajaran interaktif untuk memahami prinsip dasar katrol dalam
+        fisika SMA.
+      </p>
+      <a
+        href="#materi"
+        class="px-6 py-3 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg shadow-lg transition"
+        >Mulai Belajar</a
+      >
+    </section>
+
+    <!-- Konten Materi Singkat -->
+    <section id="materi" class="max-w-5xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-bold mb-6 text-center">Apa itu Katrol?</h2>
+      <p class="text-justify leading-relaxed mb-6">
+        Katrol adalah roda beralur yang digunakan untuk mengubah arah gaya dan
+        mempermudah pekerjaan. Dalam fisika SMA, sistem katrol dipelajari untuk
+        memahami prinsip mekanika, gaya, dan usaha.
+      </p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-4 bg-blue-100 dark:bg-blue-800 rounded-lg shadow">
+          <h3 class="font-bold mb-2">Katrol Tetap</h3>
+          <p>Sumbu katrol tidak berpindah, hanya mengubah arah gaya.</p>
+        </div>
+        <div class="p-4 bg-blue-100 dark:bg-blue-800 rounded-lg shadow">
+          <h3 class="font-bold mb-2">Katrol Bergerak</h3>
+          <p>Sumbu katrol ikut berpindah, memperkecil gaya yang dibutuhkan.</p>
+        </div>
+        <div class="p-4 bg-blue-100 dark:bg-blue-800 rounded-lg shadow">
+          <h3 class="font-bold mb-2">Katrol Majemuk</h3>
+          <p>Kombinasi katrol tetap dan bergerak, paling efisien.</p>
+        </div>
+      </div>
+
+      <!-- Animasi Katrol -->
+      <div class="mt-10">
+        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+          <h3 class="text-xl font-bold mb-4 text-center">
+            Simulasi Interaktif Sistem Katrol
+          </h3>
+          <div id="canvasContainer" class="flex justify-center"></div>
+          <div class="mt-4 text-center">
+            <p class="mb-2 font-semibold">Interaksi Simulasi:</p>
+            <ul class="list-disc list-inside inline-block text-left">
+              <li>
+                Klik pada animasi untuk mengganti jenis katrol (Tetap, Bergerak,
+                Majemuk)
+              </li>
+              <li>Tekan tombol ↑/↓ untuk mengatur kecepatan gerak beban</li>
+              <li>
+                Tekan tombol <b>Space</b> untuk mengangkat/menurunkan beban
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="bg-blue-600 dark:bg-blue-800 text-white text-center py-4 mt-12"
+    >
+      <p>&copy; 2025 Fisika Katrol SMA | Dibuat oleh Tim Dev</p>
+    </footer>
+
+    <script>
+      // Dark Mode Toggle
+      const toggleDark = document.getElementById("toggleDark");
+      toggleDark.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>

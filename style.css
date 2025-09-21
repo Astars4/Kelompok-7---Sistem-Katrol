@@ -1,0 +1,60 @@
+/* Custom Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Custom Classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Quiz Specific Styles */
+.quiz-option {
+  transition: all 0.2s ease;
+}
+
+.quiz-option:hover {
+  background-color: #dbeafe;
+}
+
+.quiz-option.correct {
+  background-color: #86efac;
+}
+
+.quiz-option.wrong {
+  background-color: #fca5a5;
+}
+
+/* Dark Mode Overrides */
+.dark .quiz-option:hover {
+  background-color: #1e40af;
+}
+
+.dark .quiz-option.correct {
+  background-color: #166534;
+}
+
+.dark .quiz-option.wrong {
+  background-color: #991b1b;
+}
