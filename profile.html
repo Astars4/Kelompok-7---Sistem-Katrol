@@ -4,162 +4,229 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile Team | Sistem Katrol</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="bg-gray-100 dark:bg-gray-900">
-    <nav class="gradient-bg text-white p-4">
-      <div class="container mx-auto">
-        <a href="index.html" class="text-xl font-bold">← Kembali ke Beranda</a>
+    <nav
+      class="sticky top-0 z-50 bg-gray-500/40 dark:bg-gray-500/40 text-white shadow-lg backdrop-blur-md"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16"
+      >
+        <a href="#" class="font-bold text-lg">Fisika Katrol</a>
+
+        <ul class="hidden md:flex space-x-6">
+          <li>
+            <a href="index.html" class="hover:underline nav-active">Beranda</a>
+          </li>
+          <li><a href="profile.html" class="hover:underline">ProfileDev</a></li>
+          <li><a href="quiz.html" class="hover:underline">Quiz</a></li>
+        </ul>
+
+        <button
+          id="toggleDark"
+          class="ml-4 p-2 rounded bg-white dark:bg-gray-700 hover:bg-white dark:hover:bg-gray-600"
+        >
+          🌙
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="md:hidden text-2xl">☰</button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden md:hidden bg-blue-700 dark:bg-blue-900 p-4 space-y-2"
+      >
+        <a href="index.html" class="block hover:underline">Beranda</a>
+        <a href="profile.html" class="block hover:underline">ProfileDev</a>
+        <a href="quiz.html" class="block hover:underline">Quiz</a>
       </div>
     </nav>
 
     <main class="container mx-auto px-4 py-8">
       <h1 class="text-3xl font-bold text-center mb-8 dark:text-white">
-        Tim Pengembang
+        Kelompok 7 - Anggota
       </h1>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Profile cards - Repeat 5 times with different info -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 mb-8">
         <div
-          class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover"
+          class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover"
         >
           <img
-            src="https://via.placeholder.com/150"
-            alt="Profile 1"
+            src="/img/Akbar.jpg"
+            alt="Muhammad Akbar Ilham"
             class="w-32 h-32 rounded-full mx-auto mb-4"
           />
           <h2 class="text-xl font-bold text-center dark:text-white">
-            Anggota 1
+            Muhammad Akbar Ilham
           </h2>
           <p class="text-gray-600 text-center mb-4 dark:text-gray-300">
-            Frontend Developer
+            2305176048
           </p>
           <div class="flex justify-center space-x-4">
-            <a href="#" class="text-blue-500 hover:text-blue-700"
+            <a
+              href="https://api.whatsapp.com/send?phone=628"
+              class="text-blue-500 hover:text-blue-700"
               ><i class="fab fa-whatsapp text-2xl"></i
             ></a>
-            <a href="#" class="text-purple-500 hover:text-purple-700"
-              ><i class="fab fa-discord text-2xl"></i
+            <a
+              href="https://github.com/username1"
+              target="_blank"
+              class="github-icon dark:text-white"
+              ><i class="fab fa-github text-2xl"></i
             ></a>
             <a href="#" class="text-pink-500 hover:text-pink-700"
               ><i class="fab fa-instagram text-2xl"></i
             ></a>
           </div>
         </div>
+
         <div
-          class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover"
+          class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover"
         >
           <img
-            src="https://via.placeholder.com/150"
-            alt="Profile 2"
+            src="img/Arifin.JPG"
+            alt="Muhammad Arifin Bachtiar"
             class="w-32 h-32 rounded-full mx-auto mb-4"
           />
           <h2 class="text-xl font-bold text-center dark:text-white">
-            Anggota 2
+            Muhammad Arifin Bachtiar
           </h2>
           <p class="text-gray-600 text-center mb-4 dark:text-gray-300">
-            Backend Developer
+            2305176070
           </p>
           <div class="flex justify-center space-x-4">
-            <a href="#" class="text-blue-500 hover:text-blue-700"
+            <a
+              href="https://api.whatsapp.com/send?phone=6283140206778"
+              class="text-blue-500 hover:text-blue-700"
               ><i class="fab fa-whatsapp text-2xl"></i
             ></a>
-            <a href="#" class="text-purple-500 hover:text-purple-700"
-              ><i class="fab fa-discord text-2xl"></i
+            <a
+              href="https://github.com/Astars4"
+              target="_blank"
+              class="github-icon dark:text-white"
+              ><i class="fab fa-github text-2xl"></i
             ></a>
-            <a href="#" class="text-pink-500 hover:text-pink-700"
+            <a
+              href="https://instagram.com/shine.ar"
+              class="text-pink-500 hover:text-pink-700"
               ><i class="fab fa-instagram text-2xl"></i
             ></a>
           </div>
         </div>
+
         <div
-          class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover"
+          class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover"
         >
           <img
-            src="https://via.placeholder.com/150"
+            src="img/Faris.jpg"
             alt="Profile 3"
             class="w-32 h-32 rounded-full mx-auto mb-4"
           />
           <h2 class="text-xl font-bold text-center dark:text-white">
-            Anggota 3
+            Maulana Al-Farizi
           </h2>
           <p class="text-gray-600 text-center mb-4 dark:text-gray-300">
-            UI/UX Designer
+            23051760
           </p>
           <div class="flex justify-center space-x-4">
             <a href="#" class="text-blue-500 hover:text-blue-700"
               ><i class="fab fa-whatsapp text-2xl"></i
             ></a>
-            <a href="#" class="text-purple-500 hover:text-purple-700"
-              ><i class="fab fa-discord text-2xl"></i
+            <a
+              href="https://github.com/username3"
+              target="_blank"
+              class="github-icon dark:text-white"
+              ><i class="fab fa-github text-2xl"></i
             ></a>
             <a href="#" class="text-pink-500 hover:text-pink-700"
               ><i class="fab fa-instagram text-2xl"></i
             ></a>
           </div>
         </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-6 gap-6">
         <div
-          class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover"
+          class="lg:col-start-2 lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover"
         >
           <img
-            src="https://via.placeholder.com/150"
-            alt="Profile 4"
+            src="img/Nadia.jpg"
+            alt="Nadia Patmairawan"
             class="w-32 h-32 rounded-full mx-auto mb-4"
           />
           <h2 class="text-xl font-bold text-center dark:text-white">
-            Anggota 4
+            Nadia Patmairawan
           </h2>
           <p class="text-gray-600 text-center mb-4 dark:text-gray-300">
-            Project Manager
+            2305176057
           </p>
           <div class="flex justify-center space-x-4">
             <a href="#" class="text-blue-500 hover:text-blue-700"
               ><i class="fab fa-whatsapp text-2xl"></i
             ></a>
-            <a href="#" class="text-purple-500 hover:text-purple-700"
-              ><i class="fab fa-discord text-2xl"></i
+            <a
+              href="https://github.com/username4"
+              target="_blank"
+              class="github-icon dark:text-white"
+              ><i class="fab fa-github text-2xl"></i
             ></a>
             <a href="#" class="text-pink-500 hover:text-pink-700"
               ><i class="fab fa-instagram text-2xl"></i
             ></a>
           </div>
         </div>
+
         <div
-          class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover"
+          class="lg:col-start-4 lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover"
         >
           <img
-            src="https://via.placeholder.com/150"
-            alt="Profile 5"
+            src="img/Sinta.jpg"
+            alt="Sinta"
             class="w-32 h-32 rounded-full mx-auto mb-4"
           />
-          <h2 class="text-xl font-bold text-center dark:text-white">
-            Anggota 5
-          </h2>
+          <h2 class="text-xl font-bold text-center dark:text-white">Sinta</h2>
           <p class="text-gray-600 text-center mb-4 dark:text-gray-300">
-            Quality Assurance
+            23051760
           </p>
           <div class="flex justify-center space-x-4">
             <a href="#" class="text-blue-500 hover:text-blue-700"
               ><i class="fab fa-whatsapp text-2xl"></i
             ></a>
-            <a href="#" class="text-purple-500 hover:text-purple-700"
-              ><i class="fab fa-discord text-2xl"></i
+            <a
+              href="https://github.com/sintaus"
+              target="_blank"
+              class="github-icon dark:text-white"
+              ><i class="fab fa-github text-2xl"></i
             ></a>
-            <a href="#" class="text-pink-500 hover:text-pink-700"
+            <a
+              href="https://instagram.com/"
+              class="text-pink-500 hover:text-pink-700"
               ><i class="fab fa-instagram text-2xl"></i
             ></a>
           </div>
         </div>
-        <!-- Repeat profile card structure for remaining team members -->
       </div>
     </main>
+    <footer class="bg-black dark:bg-black text-white text-center py-4 mt-12">
+      <p>&copy; 2025 Fisika Katrol SMA | Dibuat oleh Kelompok 7</p>
+    </footer>
+    <script src="script.js"></script>
   </body>
 </html>

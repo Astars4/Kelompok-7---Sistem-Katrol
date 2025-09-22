@@ -9,58 +9,187 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
+    <style>
+      .gradient-bg {
+        background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+      }
+
+      .quiz-option {
+        transition: all 0.3s ease;
+      }
+
+      .quiz-option:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .quiz-option.correct {
+        background-color: #10b981 !important;
+        color: white;
+      }
+
+      .quiz-option.wrong {
+        background-color: #ef4444 !important;
+        color: white;
+      }
+
+      .option-image {
+        max-width: 100%;
+        max-height: 150px;
+        margin-bottom: 8px;
+      }
+
+      .question-image {
+        max-width: 100%;
+        max-height: 200px;
+        margin: 0 auto 16px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <nav class="gradient-bg text-white p-4">
+      <div class="container mx-auto">
+        <a href="index.html" class="text-xl font-bold">← Kembali ke Beranda</a>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+          <h1 class="text-2xl font-bold mb-4 dark:text-white">
+            Quiz Sistem Katrol
+          </h1>
+          <div id="quizContainer">
+            <div id="questionContainer" class="mb-4">
+              <div
+                id="question"
+                class="text-xl font-semibold mb-4 dark:text-white"
+              ></div>
+              <div id="questionImage" class="mb-4"></div>
+            </div>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"
+              id="optionsContainer"
+            >
+              <!-- Options will be generated here -->
+            </div>
+            <div
+              id="explanationContainer"
+              class="hidden p-4 bg-gray-100 dark:bg-gray-700 rounded-lg"
+            >
+              <p class="text-gray-700 dark:text-gray-300" id="explanation"></p>
+            </div>
+            <button
+              id="nextButton"
+              class="hidden bg-blue-500 text-white p-3 rounded font-medium w-full mt-4"
+              onclick="nextQuestion()"
+            >
+              Soal Berikutnya
+            </button>
+          </div>
+          <div
+            id="scoreContainer"
+            class="mt-4 text-center hidden dark:text-white"
+          >
+            <h2 class="text-xl font-bold">
+              Skor Akhir: <span id="finalScore">0</span>
+            </h2>
+            <button
+              id="restartButton"
+              class="bg-blue-500 text-white p-3 rounded font-medium mt-4"
+              onclick="restartQuiz()"
+            >
+              Mulai Quiz Lagi
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="bg-black dark:bg-black text-white text-center py-4 mt-12">
+      <p>&copy; 2025 Fisika Katrol SMA | Dibuat oleh Kelompok 7</p>
+    </footer>
+
     <script>
       const questions = [
         {
           id: 1,
           question:
             "Berapakah gaya yang dibutuhkan untuk mengangkat beban 100N menggunakan katrol tetap?",
-          options: ["50N", "100N", "150N", "200N"],
-          correct: 1,
-          explanation:
-            "Pada katrol tetap, gaya yang dibutuhkan sama dengan berat beban (F = W)",
-        },
-        {
-          id: 2,
-          question: "Keuntungan mekanis pada katrol bergerak adalah?",
-          options: ["1", "2", "3", "4"],
-          correct: 1,
-          explanation: "Keuntungan mekanis pada katrol bergerak adalah 2.",
-        },
-        {
-          id: 3,
-          question: "Fungsi katrol dalam kehidupan sehari-hari adalah?",
+          questionImage:
+            "https://via.placeholder.com/400x200?text=Katrol+Tetap",
           options: [
-            "Memudahkan pekerjaan",
-            "Mempercepat waktu",
-            "Memperbesar gaya",
-            "Semua jawaban benar",
+            { text: "100N", image: null },
+            { text: "50N", image: null },
+            { text: "200N", image: null },
+            { text: "100N (sama dengan berat beban)", image: null },
           ],
           correct: 3,
           explanation:
-            "Katrol berfungsi memudahkan pekerjaan, mempercepat waktu, dan memperbesar gaya.",
+            "Pada katrol tetap, gaya yang diperlukan sama dengan berat beban. Jadi F = W = 100N. Keuntungan mekanis untuk katrol tetap adalah KM = W/F = 100N/100N = 1.",
+        },
+        {
+          id: 2,
+          question:
+            "Suatu hari, Angga menggunakan katrol bergerak untuk mengangkat kayu. Diketahui jika gaya yang digunakan Angga adalah sebesar 250 N. Hitunglah berat beban yang dapat diangkat oleh Angga?",
+          questionImage:
+            "https://via.placeholder.com/400x200?text=Katrol+Bergerak",
+          options: [
+            { text: "200N", image: null },
+            { text: "300N", image: null },
+            { text: "450N", image: null },
+            { text: "500N", image: null },
+          ],
+          correct: 3,
+          explanation:
+            "Pembahasan: F = 250 N. Keuntungan mekanik katrol bergerak = 2. KM = W/F → W = KM × F = 2 × 250 N = 500 N. Jadi, beban yang dapat diangkat Angga adalah sebesar 500 N.",
+        },
+        {
+          id: 3,
+          question:
+            "Tentukan besarnya gaya yang dibutuhkan untuk menarik balok seberat 1.800 N!",
+          questionImage:
+            "https://via.placeholder.com/400x200?text=Katrol+Majemuk",
+          options: [
+            { text: "344N", image: null },
+            { text: "453N", image: null },
+            { text: "600N", image: null },
+            { text: "300N", image: null },
+          ],
+          correct: 2,
+          explanation:
+            "Katrol yang digunakan adalah katrol majemuk dengan 2 katrol bergerak dan 1 katrol tetap. Keuntungan mekanis = jumlah katrol bergerak + 1 = 2 + 1 = 3. F = W/KM = 1800N/3 = 600N.",
         },
         {
           id: 4,
-          question: "Rumus mencari gaya pada katrol tetap adalah?",
-          options: ["F = m x a", "F = W", "F = 1/2 W", "F = W x h"],
+          question:
+            "Sebuah silinder baja diangkat menggunakan katrol seperti gambar berikut. Jika jarak antara poros katrol dan titik tumpu 15 cm, tentukan beban silinder baja tersebut!",
+          questionImage:
+            "https://via.placeholder.com/400x200?text=Katrol+Bergerak+2",
+          options: [
+            { text: "66N dan 20 cm", image: null },
+            { text: "76N dan 30 cm", image: null },
+            { text: "45N dan 23 cm", image: null },
+            { text: "80N dan 25 cm", image: null },
+          ],
           correct: 1,
           explanation:
-            "Rumus mencari gaya pada katrol tetap adalah F = W (gaya = berat beban).",
+            "Diketahui: F = 38 N, lb = 15 cm. Keuntungan mekanis katrol bergerak adalah 2, sehingga W = KM × F = 2 × 38 N = 76 N. Lengan kuasa = 2 × lb = 2 × 15 cm = 30 cm.",
         },
         {
           id: 5,
           question: "Apa yang dimaksud dengan katrol majemuk?",
+          questionImage:
+            "https://via.placeholder.com/400x200?text=Katrol+Majemuk+2",
           options: [
-            "Katrol dengan satu roda",
-            "Katrol dengan dua roda",
-            "Kombinasi katrol tetap dan bergerak",
-            "Katrol yang bergerak",
+            { text: "Katrol dengan satu roda", image: null },
+            { text: "Katrol dengan dua roda", image: null },
+            { text: "Kombinasi katrol tetap dan bergerak", image: null },
+            { text: "Katrol yang bergerak", image: null },
           ],
           correct: 2,
           explanation:
-            "Katrol majemuk adalah kombinasi dari katrol tetap dan katrol bergerak.",
+            "Katrol majemuk adalah kombinasi dari katrol tetap dan katrol bergerak yang digunakan bersama-sama untuk mendapatkan keuntungan mekanis yang lebih besar.",
         },
       ];
 
@@ -72,6 +201,57 @@
         currentQuestions = [...questions]
           .sort(() => Math.random() - 0.5)
           .slice(0, 5);
+      }
+
+      function updateQuiz() {
+        const question = currentQuestions[currentQuestionIndex];
+        document.getElementById("question").innerText = question.question;
+
+        // Update question image
+        const questionImageContainer = document.getElementById("questionImage");
+        questionImageContainer.innerHTML = "";
+        if (question.questionImage) {
+          const img = document.createElement("img");
+          img.src = question.questionImage;
+          img.alt = "Gambar Pertanyaan";
+          img.className = "question-image";
+          questionImageContainer.appendChild(img);
+        }
+
+        // Update options
+        const optionsContainer = document.getElementById("optionsContainer");
+        optionsContainer.innerHTML = "";
+
+        question.options.forEach((option, index) => {
+          const optionDiv = document.createElement("div");
+          optionDiv.className = "quiz-option-container";
+
+          const button = document.createElement("button");
+          button.id = `option${index}`;
+          button.className =
+            "quiz-option bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded font-medium w-full h-full flex flex-col items-center justify-center";
+          button.onclick = () => checkAnswer(index);
+
+          // Add image if available
+          if (option.image) {
+            const img = document.createElement("img");
+            img.src = option.image;
+            img.alt = "Gambar Opsi";
+            img.className = "option-image";
+            button.appendChild(img);
+          }
+
+          // Add text
+          const text = document.createElement("span");
+          text.innerText = option.text;
+          button.appendChild(text);
+
+          optionDiv.appendChild(button);
+          optionsContainer.appendChild(optionDiv);
+        });
+
+        document.getElementById("explanationContainer").classList.add("hidden");
+        document.getElementById("nextButton").classList.add("hidden");
       }
 
       function checkAnswer(answer) {
@@ -110,25 +290,19 @@
         }
       }
 
-      function updateQuiz() {
-        const question = currentQuestions[currentQuestionIndex];
-        document.getElementById("question").innerText = question.question;
-
-        for (let i = 0; i < question.options.length; i++) {
-          const optionButton = document.getElementById(`option${i}`);
-          optionButton.innerText = question.options[i];
-          optionButton.disabled = false;
-          optionButton.classList.remove("correct", "wrong");
-        }
-
-        document.getElementById("explanationContainer").classList.add("hidden");
-        document.getElementById("nextButton").classList.add("hidden");
-      }
-
       function showResults() {
         document.getElementById("quizContainer").classList.add("hidden");
         document.getElementById("scoreContainer").classList.remove("hidden");
         document.getElementById("finalScore").innerText = currentScore;
+      }
+
+      function restartQuiz() {
+        currentScore = 0;
+        currentQuestionIndex = 0;
+        shuffleQuestions();
+        document.getElementById("quizContainer").classList.remove("hidden");
+        document.getElementById("scoreContainer").classList.add("hidden");
+        updateQuiz();
       }
 
       window.onload = () => {
@@ -136,71 +310,5 @@
         updateQuiz();
       };
     </script>
-  </head>
-  <body class="bg-gray-100 dark:bg-gray-900">
-    <nav class="gradient-bg text-white p-4">
-      <div class="container mx-auto">
-        <a href="index.html" class="text-xl font-bold">← Kembali ke Beranda</a>
-      </div>
-    </nav>
-
-    <main class="container mx-auto px-4 py-8">
-      <div class="max-w-3xl mx-auto">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-          <h1 class="text-2xl font-bold mb-4 dark:text-white">
-            Quiz Sistem Katrol
-          </h1>
-          <div id="quizContainer">
-            <div
-              id="question"
-              class="text-xl font-semibold mb-4 dark:text-white"
-            ></div>
-            <div class="grid grid-cols-2 gap-4 mb-4">
-              <button
-                id="option0"
-                class="quiz-option bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded font-medium"
-                onclick="checkAnswer(0)"
-              ></button>
-              <button
-                id="option1"
-                class="quiz-option bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded font-medium"
-                onclick="checkAnswer(1)"
-              ></button>
-              <button
-                id="option2"
-                class="quiz-option bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded font-medium"
-                onclick="checkAnswer(2)"
-              ></button>
-              <button
-                id="option3"
-                class="quiz-option bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-3 rounded font-medium"
-                onclick="checkAnswer(3)"
-              ></button>
-            </div>
-            <div
-              id="explanationContainer"
-              class="hidden p-4 bg-gray-100 dark:bg-gray-700 rounded-lg"
-            >
-              <p class="text-gray-700 dark:text-gray-300" id="explanation"></p>
-            </div>
-            <button
-              id="nextButton"
-              class="hidden bg-blue-500 text-white p-3 rounded font-medium"
-              onclick="nextQuestion()"
-            >
-              Soal Berikutnya
-            </button>
-          </div>
-          <div
-            id="scoreContainer"
-            class="mt-4 text-center hidden dark:text-white"
-          >
-            <h2 class="text-xl font-bold">
-              Skor Akhir: <span id="finalScore">0</span>
-            </h2>
-          </div>
-        </div>
-      </div>
-    </main>
   </body>
 </html>
