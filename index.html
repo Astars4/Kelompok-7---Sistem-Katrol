@@ -27,7 +27,6 @@
       <div
         class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16"
       >
-        <!-- Logo -->
         <a href="#" class="font-bold text-lg">Fisika Katrol</a>
 
         <!-- Menu Desktop -->
@@ -59,12 +58,6 @@
         <a href="index.html" class="block hover:underline">Beranda</a>
         <a href="profile.html" class="block hover:underline">ProfileDev</a>
         <a href="quiz.html" class="block hover:underline">Quiz</a>
-        <div>
-          <p class="font-semibold">Materi</p>
-          <a href="#" class="block ml-2 hover:underline">Pengantar</a>
-          <a href="#" class="block ml-2 hover:underline">Jenis Katrol</a>
-          <a href="#" class="block ml-2 hover:underline">Contoh Soal</a>
-        </div>
       </div>
     </nav>
     <!-- end of Navbar -->
@@ -165,40 +158,7 @@
         </div>
       </div>
       <!-- end of coba -->
-      <!-- Di bagian Konten Materi Singkat, sebelum canvasContainer -->
-      <div class="flex justify-center mb-6">
-        <div class="bg-white dark:bg-gray-800 p-2 rounded-lg shadow">
-          <button
-            id="katrolTetapBtn"
-            class="katrol-btn active px-4 py-2 rounded-md"
-          >
-            Katrol Tetap
-          </button>
-          <button
-            id="katrolBergerakBtn"
-            class="katrol-btn px-4 py-2 rounded-md"
-          >
-            Katrol Bergerak
-          </button>
-          <button id="katrolMajemukBtn" class="katrol-btn px-4 py-2 rounded-md">
-            Katrol Majemuk
-          </button>
-        </div>
-      </div>
 
-      <!-- Animasi Katrol -->
-      <div class="mt-10">
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
-          <h3 class="text-xl font-bold mb-4 text-center">
-            Simulasi Interaktif Sistem Katrol
-          </h3>
-          <div id="canvasContainer" class="flex justify-center"></div>
-          <div
-            id="simControl"
-            class="flex flex-wrap gap-4 justify-center mt-4"
-          ></div>
-        </div>
-      </div>
       <!-- Animasi Katrol -->
       <div class="mt-10">
         <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
@@ -220,9 +180,6 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <script src="sketch.js"></script>
-    <script src="katrol-tetap.js"></script>
-    <script src="katrol-bergerak.js"></script>
-    <script src="katrol-majemuk.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
