@@ -364,7 +364,7 @@ function computeAcceleration(friction) {
     let netForce = (effectiveMass2 - m1) * g;
     let totalMass = m1 + effectiveMass2;
     return netForce / totalMass;
-  }
+  } 
 }
 
 function calculateMechanicalAdvantage() {

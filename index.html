@@ -15,6 +15,43 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Navbar modern hover effect */
+      .nav-link {
+        position: relative;
+        transition: color 0.2s;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -2px;
+        transform: translateX(-50%) scaleX(0);
+        width: 70%;
+        height: 2px;
+        background: #3b82f6;
+        border-radius: 2px;
+        transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+        opacity: 0.8;
+      }
+      .nav-link:hover,
+      .nav-link:focus {
+        color: #3b82f6;
+      }
+      .nav-link:hover::after,
+      .nav-link:focus::after {
+        transform: translateX(-50%) scaleX(1);
+      }
+      /* Active state */
+      .nav-link.active,
+      .nav-link.font-bold.underline.text-blue-300 {
+        color: #3b82f6 !important;
+      }
+      .nav-link.active::after,
+      .nav-link.font-bold.underline.text-blue-300::after {
+        transform: translateX(-50%) scaleX(1);
+      }
+    </style>
   </head>
 
   <body
@@ -32,10 +69,10 @@
         <!-- Menu Desktop -->
         <ul class="hidden md:flex space-x-6">
           <li>
-            <a href="index.html" class="hover:underline nav-active">Beranda</a>
+            <a href="index.html" class="nav-link">Beranda</a>
           </li>
-          <li><a href="quiz.html" class="hover:underline">Quiz</a></li>
-          <li><a href="profile.html" class="hover:underline">Profile</a></li>
+          <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+          <li><a href="profile.html" class="nav-link">Profile</a></li>
         </ul>
 
         <!-- Dark Mode Toggle -->
@@ -54,10 +91,11 @@
       <div
         id="mobileMenu"
         class="hidden md:hidden bg-blue-700 dark:bg-blue-900 p-4 space-y-2"
-      ><a href="index.html" class="block hover:underline">Beranda</a>
-      <a href="quiz.html" class="block hover:underline">Quiz</a>
-      <a href="profile.html" class="block hover:underline">Profile</a>
-    </div>
+      >
+        <a href="index.html" class="nav-link block">Beranda</a>
+        <a href="quiz.html" class="nav-link block">Quiz</a>
+        <a href="profile.html" class="nav-link block">Profile</a>
+      </div>
     </nav>
     <!-- end of Navbar -->
 
@@ -85,12 +123,29 @@
             Media pembelajaran interaktif untuk memahami prinsip dasar katrol
             dalam fisika SMA.
           </p>
-          <a
+          <!-- <a
             href="#materi"
             class="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl shadow-lg transition"
           >
             Mulai Belajar
+          </a> -->
+          <!-- From Uiverse.io by M4rio1 -->
+          <a href="#materi">
+            <button
+              class="relative bg-[#a1a1a1] text-white font-medium text-[17px] px-4 py-[0.35em] pl-5 h-[2.8em] rounded-[0.9em] flex items-center overflow-hidden cursor-pointer shadow-[inset_0_0_1.6em_-0.6em_#714da6] group">
+              <span class="mr-10">Get started</span>
+              <div
+                class="absolute right-[0.3em] bg-white h-[2.2em] w-[2.2em] rounded-[0.7em] flex items-center justify-center transition-all duration-300 group-hover:w-[calc(100%-0.6em)] shadow-[0.1em_0.1em_0.6em_0.2em_#a1a1a1] active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                  class="w-[1.1em] transition-transform duration-300 text-[#7b52b9] group-hover:translate-x-[0.1em]">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z">
+                  </path>
+                </svg>
+              </div>
+            </button>
           </a>
+
         </div>
       </div>
 
@@ -119,9 +174,17 @@
     <section id="materi" class="max-w-5xl mx-auto px-4 py-12">
       <h2 class="text-2xl font-bold mb-6 text-center">Apa itu Katrol?</h2>
       <p class="text-justify leading-relaxed mb-6">
-        Katrol adalah roda beralur yang digunakan untuk mengubah arah gaya dan
-        mempermudah pekerjaan. Dalam fisika SMA, sistem katrol dipelajari untuk
-        memahami prinsip mekanika, gaya, dan usaha.
+          Katrol adalah roda beralur yang digunakan untuk mengubah arah gaya dan
+          mempermudah pekerjaan. Dalam fisika SMA, sistem katrol dipelajari untuk
+          memahami prinsip mekanika, gaya, dan usaha. Fungsi katrol secara umum
+          adalah mempermudah pengangkatan atau penarikan beban berat dengan
+          mengurangi gaya yang dibutuhkan, dan tiga jenisnya memiliki fungsi
+          spesifik: katrol tetap mengubah arah gaya (misal: sumur timba), katrol
+          bebas memperkecil gaya hingga setengahnya (misal: derek sederhana), dan
+          katrol majemuk menggabungkan keduanya untuk mengurangi gaya secara
+          signifikan pada beban sangat berat (misal: crane). Berikut adalah fungsi
+          spesifik dari setiap jenis katrol:
+
       </p>
       <div class="grid md:grid-cols-3 gap-6 mb-6">
         <div
@@ -130,7 +193,9 @@
           <div class="card__content">
             <p class="card__title font-bold mb-2">Katrol Tetap</p>
             <p class="card__description">
-              Sumbu katrol tidak berpindah, hanya mengubah arah gaya.
+              Poros katrol ini tidak berpindah posisi, sehingga gaya yang diberikan untuk menarik beban
+              ke atas dapat diubah menjadi gaya yang ditarik ke bawah dan mengubah arah gaya. Contoh:
+              Katrol pada tiang bendera atau sumur timba.
             </p>
           </div>
         </div>
@@ -140,7 +205,10 @@
           <div class="card__content">
             <p class="card__title font-bold mb-2">Katrol Bergerak</p>
             <p class="card__description">
-              Sumbu katrol ikut berpindah, memperkecil gaya yang dibutuhkan.
+              Katrol ini porosnya ikut bergerak bersama dengan beban ke atas
+              atau ke bawah, menarik beban akan lebih kecil dari berat beban.
+              Contoh: Katrol yang digunakan pada alat pengangkatan peti kemas di
+              pelabuhan atau pada sistem derek sederhana.
             </p>
           </div>
         </div>
@@ -150,7 +218,10 @@
           <div class="card__content">
             <p class="card__title font-bold mb-2">Katrol Majemuk</p>
             <p class="card__description">
-              Kombinasi katrol tetap dan bergerak, paling efisien.
+              Jenis ini merupakan kombinasi dari katrol tetap dan katrol bebas
+              yang membentuk satu sistem. Fungsi: Mempermudah pengangkatan beban
+              yang sangat berat. Contoh: Sistem hoist pada crane atau alat
+              pengangkat mesin di industri.
             </p>
           </div>
         </div>
@@ -179,5 +250,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <script src="sketch.js"></script>
     <script src="script.js"></script>
+    <script>
+      // Navbar active state logic
+      function setActiveNav() {
+        // Desktop nav
+        const navLinks = document.querySelectorAll('nav ul .nav-link');
+        navLinks.forEach(link => {
+          if (link.href && link.href.split('/').pop() === location.pathname.split('/').pop()) {
+            link.classList.add('font-bold', 'underline', 'text-blue-300', 'active');
+          } else {
+            link.classList.remove('font-bold', 'underline', 'text-blue-300', 'active');
+          }
+          link.addEventListener('click', function () {
+            navLinks.forEach(l => l.classList.remove('font-bold', 'underline', 'text-blue-300', 'active'));
+            this.classList.add('font-bold', 'underline', 'text-blue-300', 'active');
+          });
+        });
+
+        // Mobile nav
+        const mobileLinks = document.querySelectorAll('#mobileMenu .nav-link');
+        mobileLinks.forEach(link => {
+          if (link.href && link.href.split('/').pop() === location.pathname.split('/').pop()) {
+            link.classList.add('font-bold', 'underline', 'text-blue-300', 'active');
+          } else {
+            link.classList.remove('font-bold', 'underline', 'text-blue-300', 'active');
+          }
+          link.addEventListener('click', function () {
+            mobileLinks.forEach(l => l.classList.remove('font-bold', 'underline', 'text-blue-300', 'active'));
+            this.classList.add('font-bold', 'underline', 'text-blue-300', 'active');
+          });
+        });
+      }
+      document.addEventListener('DOMContentLoaded', setActiveNav);
+    </script>
   </body>
 </html>

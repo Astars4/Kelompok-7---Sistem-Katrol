@@ -19,6 +19,42 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .nav-link {
+        position: relative;
+        transition: color 0.2s;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -2px;
+        transform: translateX(-50%) scaleX(0);
+        width: 70%;
+        height: 2px;
+        background: #3b82f6;
+        border-radius: 2px;
+        transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+        opacity: 0.8;
+      }
+      .nav-link:hover,
+      .nav-link:focus {
+        color: #3b82f6;
+      }
+      .nav-link:hover::after,
+      .nav-link:focus::after {
+        transform: translateX(-50%) scaleX(1);
+      }
+      /* Active state */
+      .nav-link.active,
+      .nav-link.font-bold.underline.text-blue-300 {
+        color: #3b82f6 !important;
+      }
+      .nav-link.active::after,
+      .nav-link.font-bold.underline.text-blue-300::after {
+        transform: translateX(-50%) scaleX(1);
+      }
+    </style>
   </head>
   <body class="bg-gray-100 dark:bg-gray-900">
     <nav
@@ -31,11 +67,10 @@
 
         <ul class="hidden md:flex space-x-6">
           <li>
-            <a href="index.html" class="hover:underline nav-active">Beranda</a>
+            <a href="index.html" class="nav-link">Beranda</a>
           </li>
-
-          <li><a href="quiz.html" class="hover:underline">Quiz</a></li>
-          <li><a href="profile.html" class="hover:underline">Profile</a></li>
+          <li><a href="quiz.html" class="nav-link">Quiz</a></li>
+          <li><a href="profile.html" class="nav-link">Profile</a></li>
         </ul>
 
         <button
@@ -54,9 +89,9 @@
         id="mobileMenu"
         class="hidden md:hidden bg-blue-700 dark:bg-blue-900 p-4 space-y-2"
       >
-          <a href="index.html" class="block hover:underline">Beranda</a>
-          <a href="quiz.html" class="block hover:underline">Quiz</a>
-      <a href="profile.html" class="block hover:underline">Profile</a>
+          <a href="index.html" class="nav-link block">Beranda</a>
+          <a href="quiz.html" class="nav-link block">Quiz</a>
+      <a href="profile.html" class="nav-link block">Profile</a>
         </div>
     </nav>
 
@@ -241,5 +276,38 @@
       <p>&copy; 2025 Fisika Katrol SMA | Dibuat oleh Kelompok 7</p>
     </footer>
     <script src="script.js"></script>
+    <script>
+      // Navbar active state logic
+      function setActiveNav() {
+        // Desktop nav
+        const navLinks = document.querySelectorAll('nav ul .nav-link');
+        navLinks.forEach(link => {
+          if (link.href && link.href.split('/').pop() === location.pathname.split('/').pop()) {
+            link.classList.add('font-bold', 'underline', 'text-blue-300', 'active');
+          } else {
+            link.classList.remove('font-bold', 'underline', 'text-blue-300', 'active');
+          }
+          link.addEventListener('click', function () {
+            navLinks.forEach(l => l.classList.remove('font-bold', 'underline', 'text-blue-300', 'active'));
+            this.classList.add('font-bold', 'underline', 'text-blue-300', 'active');
+          });
+        });
+
+        // Mobile nav
+        const mobileLinks = document.querySelectorAll('#mobileMenu .nav-link');
+        mobileLinks.forEach(link => {
+          if (link.href && link.href.split('/').pop() === location.pathname.split('/').pop()) {
+            link.classList.add('font-bold', 'underline', 'text-blue-300', 'active');
+          } else {
+            link.classList.remove('font-bold', 'underline', 'text-blue-300', 'active');
+          }
+          link.addEventListener('click', function () {
+            mobileLinks.forEach(l => l.classList.remove('font-bold', 'underline', 'text-blue-300', 'active'));
+            this.classList.add('font-bold', 'underline', 'text-blue-300', 'active');
+          });
+        });
+      }
+      document.addEventListener('DOMContentLoaded', setActiveNav);
+    </script>
   </body>
 </html>
