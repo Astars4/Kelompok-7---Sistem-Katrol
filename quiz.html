@@ -94,70 +94,37 @@
   </head>
 
   <body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
-    <nav
-      class="sticky top-0 z-50 bg-gray-500/40 dark:bg-gray-800/40 text-white shadow-lg backdrop-blur-md transition-colors duration-300"
-    >
-      <div
-        class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16"
-      >
+    <nav class="sticky top-0 z-50 bg-black dark:bg-gray-100 text-white shadow-lg backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
         <a href="#" class="font-bold text-lg">Fisika Katrol</a>
-
-        <!-- Menu Desktop -->
+    
         <ul class="hidden md:flex space-x-6">
           <li>
-            <a
-              href="index.html"
-              class="hover:underline nav-active transition-colors duration-200"
-              >Beranda</a
-            >
+            <a href="index.html" class="hover:underline nav-active">Beranda</a>
           </li>
-          <li>
-            <a
-              href="quiz.html"
-              class="hover:underline transition-colors duration-200"
-              >Quiz</a
-            >
-          </li>
-          <li>
-            <a
-              href="profile.html"
-              class="hover:underline transition-colors duration-200"
-              >Profile</a
-            >
-          </li>
+    
+          <li><a href="quiz.html" class="hover:underline">Quiz</a></li>
+          <li><a href="profile.html" class="hover:underline">Profile</a></li>
         </ul>
-
-        <!-- Dark Mode Toggle -->
-        <button
-          id="toggleDark"
-          class="ml-4 p-2 rounded bg-white dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
-          aria-label="Toggle dark mode"
-        >
-          <span id="darkModeIcon">🌙</span>
-        </button>
-
+    
+        <!-- <button id="toggleDark" class="ml-4 p-2 rounded bg-white dark:bg-gray-700 hover:bg-white dark:hover:bg-gray-600">
+          🌙
+        </button> -->
+        <p>Semangat yah</p>
+    
         <!-- Mobile Menu Button -->
-        <button
-          id="mobileMenuBtn"
-          class="md:hidden text-2xl transition-transform duration-200 hover:scale-110"
-        >
-          ☰
-        </button>
+        <button id="mobileMenuBtn" class="md:hidden text-2xl">☰</button>
       </div>
-
+    
       <!-- Mobile Menu -->
-      <div
-        id="mobileMenu"
-        class="hidden md:hidden bg-blue-700 dark:bg-blue-900 p-4 space-y-2 transition-all duration-300"
-      >
-        <a href="index.html" class="block hover:underline">Beranda</a>
-        <a href="quiz.html" class="block hover:underline">Quiz</a>
-        <a href="profile.html" class="block hover:underline">Profile</a>
-        >
-      </div>
+      <div id="mobileMenu" class="hidden md:hidden bg-blue-700 dark:bg-blue-900 p-4 space-y-2">
+                <a href="index.html" class="block hover:underline">Beranda</a>
+                <a href="quiz.html" class="block hover:underline">Quiz</a>
+      <a href="profile.html" class="block hover:underline">Profile</a>
+              </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-8 transition-colors duration-300">
+    <main id="isi penjelasan" class="container mx-auto px-4 py-8 transition-colors duration-300">
       <div class="max-w-3xl mx-auto">
         <div
           class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors duration-300"
